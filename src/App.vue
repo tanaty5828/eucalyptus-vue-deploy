@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <div>{{json_value}}</div>
   </div>
 </template>
 
@@ -30,3 +30,24 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      json_value: {}
+    };
+  },
+  created() {
+    axios
+      .get('http://localhost:8080')
+      .then(response => {
+        this.json_value = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+};
+</script>
