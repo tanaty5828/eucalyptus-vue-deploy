@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Setup git repogitories
+        env:
+          GITHUB_IO_REPO_DEPLOY_KEY: ${{ secrets.REPO_PUSH_KEY }}
+        run: |
+          mkdir $HOME/.ssh
+          echo "$GITHUB_IO_REPO_DEPLOY_KEY" > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
+          git config --global user.email "mtpd7700@gmail.com"
+          git config --global user.name "Hiroki T4N4K4"
+          git config remote.origin.url "git@github.com:tanaty5828/eucalyptus-vue-deploy.git"
+          git fetch origin master
+          git checkout master
+        
+      - name: Push pages
+        run: |
+          git pull origin master
+          git push origin master
