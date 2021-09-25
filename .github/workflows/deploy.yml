@@ -34,9 +34,7 @@ jobs:
           git fetch origin master
           git checkout master
 
-      - name: Setup
-        uses: mxschmitt/action-tmate@v3
-
       - name: Push pages
         run: |
+          cd deploy/eucalyptus-vue
           git push origin master
