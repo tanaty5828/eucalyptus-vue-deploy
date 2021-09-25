@@ -26,7 +26,7 @@ jobs:
           git config remote.origin.url "git@github.com:tanaty5828/eucalyptus-vue-deploy.git"
           git fetch origin master
           git checkout master
-        
+      # ログ出す箇所
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
