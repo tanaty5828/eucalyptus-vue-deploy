@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: feature/issue6/add-commit-test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Setup git repogitories
+        env:
+          GITHUB_IO_REPO_DEPLOY_KEY: ${{ secrets.REPO_PUSH_KEY }}
+        run: |
+          mkdir $HOME/.ssh
+          echo "$GITHUB_IO_REPO_DEPLOY_KEY" > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
+          git config --global user.email "daisuke@pluslab.org"
+          git config --global user.name "DaisukeHirabayashi"
+          git config remote.origin.url "git@github.com:DaisukeHirabayashi/test-vue.git"
+          git fetch origin master
+          git checkout master
+        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
+      - name: Push pages
+        run: |
+          git add -A
+          git commit -m "Deploy $GITHUB_SHA by GitHub Actions"
+          git pull origin master
+          git push origin master
