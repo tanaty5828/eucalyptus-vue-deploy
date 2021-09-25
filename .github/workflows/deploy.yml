@@ -15,10 +15,10 @@ jobs:
       - name: Setup git repogitories
         env:
           GITHUB_IO_REPO_DEPLOY_KEY: ${{ secrets.REPO_PUSH_KEY }}
-          GITHUB_IO_REPO_DEPLOY_KEY: ${{ secrets.REPO_CLONE_KEY }}
+          GITHUB_IO_REPO_CLONE_KEY: ${{ secrets.REPO_CLONE_KEY }}
         run: |
           mkdir $HOME/.ssh
-          echo "$GITHUB_IO_CLONE_KEY" > $HOME/.ssh/id_rsa
+          echo "$GITHUB_IO_REPO_CLONE_KEY" > $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
 
           mkdir deploy
@@ -33,6 +33,9 @@ jobs:
           chmod 600 $HOME/.ssh/id_rsa
           git fetch origin master
           git checkout master
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Push pages
         run: |
