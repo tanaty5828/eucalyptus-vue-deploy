@@ -34,9 +34,6 @@ jobs:
           git fetch origin master
           git checkout master
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Push pages
         run: |
           git push origin master
