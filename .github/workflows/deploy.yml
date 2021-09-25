@@ -29,4 +29,5 @@ jobs:
         
       - name: Push pages
         run: |
+          git pull
           git push origin master
