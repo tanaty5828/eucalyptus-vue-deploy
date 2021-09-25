@@ -15,18 +15,24 @@ jobs:
       - name: Setup git repogitories
         env:
           GITHUB_IO_REPO_DEPLOY_KEY: ${{ secrets.REPO_PUSH_KEY }}
+          GITHUB_IO_REPO_CLONE_KEY: ${{ secrets.REPO_CLONE_KEY }}
         run: |
           mkdir $HOME/.ssh
-          echo "$GITHUB_IO_REPO_DEPLOY_KEY" > $HOME/.ssh/id_rsa
+          echo "$GITHUB_IO_REPO_CLONE_KEY" > $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
+
+          mkdir deploy
+          cd deploy
+          git clone git@github.com:Red-Paisanos/eucalyptus-vue.git
+          cd eucalyptus-vue
           git config --global user.email "mtpd7700@gmail.com"
           git config --global user.name "Hiroki T4N4K4"
           git config remote.origin.url "git@github.com:tanaty5828/eucalyptus-vue-deploy.git"
+
+          echo "$GITHUB_IO_REPO_DEPLOY_KEY" > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
           git fetch origin master
           git checkout master
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
 
       - name: Push pages
         run: |
