@@ -11,8 +11,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
 
       - name: Setup git repogitories
         env:
@@ -29,5 +27,4 @@ jobs:
         
       - name: Push pages
         run: |
-          git pull
           git push origin master
