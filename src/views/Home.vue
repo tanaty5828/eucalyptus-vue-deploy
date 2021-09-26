@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container>
+    <v-flex offset-xs3 xs6>
+      <article-card-list :articles="articles"></article-card-list>
+    </v-flex>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import ArticleCardList from "../components/ArticleCardList.vue";
+import axios from "axios";
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
-  }
-}
+    ArticleCardList,
+  },
+  data() {
+    return {
+      articles: [],
+    };
+  },
+  created() {
+    this.getArticles();
+  },
+  methods: {
+    getArticles() {
+      axios
+        .get("https://eucalyptus-api.herokuapp.com/articles")
+        .then((response) => {
+          this.articles = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
