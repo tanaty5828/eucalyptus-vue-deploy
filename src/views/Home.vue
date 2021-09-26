@@ -1,13 +1,17 @@
 <template>
-  <article-card-list :articles="articles"></article-card-list>
+  <v-container>
+    <v-flex offset-xs3 xs6>
+      <article-card-list :articles="articles"></article-card-list>
+    </v-flex>
+  </v-container>
 </template>
 
 <script>
-import ArticleCardList from '../components/ArticleCardList.vue'
+import ArticleCardList from "../components/ArticleCardList.vue";
 import axios from "axios";
 export default {
   components: {
-    ArticleCardList
+    ArticleCardList,
   },
   data() {
     return {
