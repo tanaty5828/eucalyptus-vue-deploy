@@ -41,7 +41,7 @@ export default {
   },
   created() {
     axios
-      .get('http://localhost:8080')
+      .get('https://eucalyptus-api.herokuapp.com/')
       .then(response => {
         this.json_value = response.data
       })
