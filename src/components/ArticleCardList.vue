@@ -5,7 +5,9 @@
         <v-card-title>{{ article.title }}</v-card-title>
         <v-divider class="mx-4"></v-divider>
         <!-- <v-divider :dark=true class="mx-4"></v-divider> -->
-        <v-card-text>{{ removeMarkdown(article.content) }}</v-card-text>
+        <v-card-text>{{
+          sliceContent(removeMarkdown(article.content))
+        }}</v-card-text>
         <v-btn text color="deep-purple accent-4" class="mx-1 mb-2"
           >Read More</v-btn
         >
@@ -15,7 +17,6 @@
 </template>
 
 <script>
-import marked from "marked";
 import removeMd from "remove-markdown";
 
 export default {
@@ -26,9 +27,6 @@ export default {
     },
   },
   methods: {
-    markedContent(markdown) {
-      return marked(markdown);
-    },
     sliceContent(content) {
       if (!content) return "";
       if (content.length > 200) {
@@ -38,9 +36,10 @@ export default {
       return content;
     },
     removeMarkdown(markdown) {
-      var removed = removeMd(markdown).replace(/\r?\n/g, "").replace(/\t/g, "");
-      console.log(removed);
-      return removed;
+      return removeMd(markdown)
+        .replace(/\\n/g, "")
+        .replace(/\\t/g, "")
+        .replace(/#/g, "");
     },
   },
 };
