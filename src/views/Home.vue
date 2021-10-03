@@ -3,10 +3,10 @@
     <v-flex offset-xs1 xs10>
       <v-carousel height="auto">
         <v-carousel-item
-          v-for="(corousel_item, i) in carousel_items"
+          v-for="(corouselItem, i) in carousel_item"
           :key="i"
-          :src="carousel_item.src"
-          :href="carousel_item.link"
+          :src="carouselItem.src"
+          :href="carouselItem.link"
         >
         </v-carousel-item>
       </v-carousel>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       articles: [],
-      carousel_items: [
+      carousel_item: [
         {
           src: require("../assets/img/banners/1.png"),
           link: "https://google.com",
