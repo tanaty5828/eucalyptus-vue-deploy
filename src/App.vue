@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" dark flat="true">
+    <v-app-bar app color="white" dark :flat="true">
       <div class="d-flex align-center">
         <v-img
           alt="Eucalyptus Logo"

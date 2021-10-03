@@ -1,5 +1,16 @@
 <template>
   <v-container>
+    <v-flex offset-xs1 xs10>
+      <v-carousel height="auto">
+        <v-carousel-item
+          v-for="(carousel_item, i) in carousel_items"
+          :key="i"
+          :src="carousel_item.src"
+          :href="carousel_item.link"
+        >
+        </v-carousel-item>
+      </v-carousel>
+    </v-flex>
     <v-flex offset-xs3 xs6>
       <article-card-list :articles="articles"></article-card-list>
     </v-flex>
@@ -16,6 +27,20 @@ export default {
   data() {
     return {
       articles: [],
+      carousel_items: [
+        {
+          src: require("../assets/img/banners/1.png"),
+          link: "https://google.com",
+        },
+        {
+          src: require("../assets/img/banners/2.png"),
+          link: "https://google.com",
+        },
+        {
+          src: require("../assets/img/banners/3.png"),
+          link: "https://google.com",
+        },
+      ],
     };
   },
   created() {
