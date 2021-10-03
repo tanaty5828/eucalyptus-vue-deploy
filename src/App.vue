@@ -14,21 +14,9 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn href="https://google.com/" target="_blank" text>
-        <span class="mr-2" style="color: #1b5e20">Search</span>
-        <!-- color equals green darken-4 -->
-        <v-icon color="green darken-4">mdi-magnify</v-icon>
-      </v-btn>
-      <v-btn href="https://google.com/" target="_blank" text>
-        <span class="mr-2" style="color: #1b5e20">Articles</span>
-        <!-- color equals green darken-4 -->
-        <v-icon color="green darken-4">mdi-book-open-page-variant</v-icon>
-      </v-btn>
-      <v-btn href="https://google.com/" target="_blank" text>
-        <span class="mr-2" style="color: #1b5e20">Log-in</span>
-        <!-- color equals green darken-4 -->
-        <v-icon color="green darken-4">mdi-account</v-icon>
-      </v-btn>
+      <header-button :button="buttons[0]"></header-button>
+      <header-button :button="buttons[1]"></header-button>
+      <header-button :button="buttons[2]"></header-button>
     </v-app-bar>
 
     <v-main>
@@ -38,11 +26,32 @@
 </template>
 
 <script>
+import HeaderButton from "./components/HeaderButton.vue";
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  }),
+  components: {
+    HeaderButton,
+  },
+  data: () => {
+    return {
+      buttons: [
+        {
+          text: "Search",
+          icon: "mdi-magnify",
+          link: "https://google.com",
+        },
+        {
+          text: "Articles",
+          icon: "mdi-book-open-page-variant",
+          link: "https://google.com",
+        },
+        {
+          text: "Log-in",
+          icon: "mdi-account",
+          link: "https://google.com",
+        },
+      ],
+    };
+  },
 };
 </script>
