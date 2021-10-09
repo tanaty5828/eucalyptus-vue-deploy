@@ -8,9 +8,7 @@
         <v-card-text>{{
           sliceContent(removeMarkdown(article.content))
         }}</v-card-text>
-        <v-btn text color="deep-purple accent-4" class="mx-1 mb-2"
-          >Read More</v-btn
-        >
+        <v-btn text color="deep-purple accent-4" class="mx-1 mb-2" @click="moveArticlePage(article.id_sha256)" >Read More</v-btn>
       </v-card>
     </template>
   </div>
@@ -41,6 +39,9 @@ export default {
         .replace(/\\t/g, "")
         .replace(/#/g, "");
     },
+    moveArticlePage(id_sha256) {
+      document.location.href = "./articles/" + id_sha256;
+    }
   },
 };
 </script>
