@@ -19,6 +19,6 @@ export default {
 </script>
 
 <style>
-@import "../../public/styles/hover.css";
+@import "../../../../public/styles/hover.css";
 
 </style>
