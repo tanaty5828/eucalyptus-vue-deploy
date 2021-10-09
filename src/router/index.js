@@ -11,6 +11,10 @@ const routes = [
     component: Home
   },
   {
+    path: '/articles/create',
+    component: () => import('../views/articles/Create.vue'),
+  },
+  {
     path: '/articles/:id_sha256',
     component: () => import('../views/articles/Show.vue'),
   },
