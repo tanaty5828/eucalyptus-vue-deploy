@@ -10,6 +10,10 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/articles/:id_sha256',
+    component: () => import('../views/articles/Show.vue'),
+  },
 ]
 
 const router = new VueRouter({
