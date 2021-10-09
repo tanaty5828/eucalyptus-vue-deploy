@@ -1,55 +1,57 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="white" dark :flat="true">
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="Eucalyptus Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          :src="require('./assets/img/logos/3t.png')"
           transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
+          width="230"
         />
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <header-button :button="buttons[0]"></header-button>
+      <header-button :button="buttons[1]"></header-button>
+      <header-button :button="buttons[2]"></header-button>
     </v-app-bar>
 
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-
+import HeaderButton from "./components/HeaderButton.vue";
 export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
+  name: "App",
+  components: {
+    HeaderButton,
+  },
+  data: () => {
+    return {
+      buttons: [
+        {
+          text: "Search",
+          icon: "mdi-magnify",
+          link: "https://google.com",
+        },
+        {
+          text: "Articles",
+          icon: "mdi-book-open-page-variant",
+          link: "https://google.com",
+        },
+        {
+          text: "Log-in",
+          icon: "mdi-account",
+          link: "https://google.com",
+        },
+      ],
+    };
+  },
 };
 </script>
