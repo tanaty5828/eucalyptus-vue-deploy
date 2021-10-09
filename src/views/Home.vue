@@ -31,7 +31,6 @@ export default {
     return {
       articles: [],
       is_loading: false,
-      // set_timeout: True,
       carousel_items: [
         {
           src: require("../assets/img/banners/1.png"),
