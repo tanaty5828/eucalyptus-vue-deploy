@@ -1,17 +1,19 @@
 <template>
   <v-row justify="center">
-    <v-dialog
-      v-model="loadingDialog"
-      max-width="290"
-      persistent
-    >
-      <v-card>
-        <v-card-text class="pt-3">
-          ロード中
-          <v-progress-linear
-            indeterminate
-            class="mb-0"
-          ></v-progress-linear>
+    <v-dialog v-model="loadingDialog" max-width="290" persistent overlay-opacity="0.5">
+      <v-card class="dialog">
+        <v-card-text class="pt-6">
+          <v-row justify="center">
+            <v-progress-circular
+              :size="80"
+              color="green"
+              darken-4
+              indeterminate
+              :value="value"
+            >
+              Loading...
+            </v-progress-circular>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -19,14 +21,18 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      value: Boolean,
+export default {
+  props: {
+    value: Boolean,
+  },
+  computed: {
+    loadingDialog() {
+      return this.value;
     },
-    computed: {
-      loadingDialog() {
-        return this.value
-      }
-    },
-  }
+  },
+};
 </script>
+
+<style>
+@import "../../../../public/styles/dialog.css";
+</style>

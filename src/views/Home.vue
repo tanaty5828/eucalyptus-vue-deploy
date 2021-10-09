@@ -57,12 +57,16 @@ export default {
         .get("https://eucalyptus-api.herokuapp.com/articles")
         .then((response) => {
           this.articles = response.data;
-          this.is_loading = false;
+          setTimeout(this.closeLoading, 2500);
         })
         .catch((error) => {
           console.log(error);
         });
     },
+
+    closeLoading() {
+      this.is_loading = false
+    }
   },
 };
 </script>
