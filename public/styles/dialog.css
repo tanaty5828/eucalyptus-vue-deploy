@@ -1,0 +1,9 @@
+.dialog{
+  height: 100px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+.dialog::-webkit-scrollbar {
+  display: none;
+}
