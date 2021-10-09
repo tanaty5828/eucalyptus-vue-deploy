@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="value" max-width="290" persistent overlay-opacity="0.5" close-delay="3000">
+    <v-dialog v-model="value" max-width="290" persistent overlay-opacity="0.5">
       <v-card class="dialog">
         <v-card-text class="pt-6">
           <v-row justify="center">
