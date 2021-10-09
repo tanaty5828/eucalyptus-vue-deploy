@@ -20,7 +20,7 @@
 
 <script>
 import ArticleCardList from "../components/ArticleCardList.vue";
-import LoadingComponent from "../components/vue/common/LoadingComponent.vue"
+import LoadingComponent from "../components/vue/common/LoadingComponent.vue";
 import axios from "axios";
 export default {
   components: {
@@ -31,6 +31,7 @@ export default {
     return {
       articles: [],
       is_loading: false,
+      // set_timeout: True,
       carousel_items: [
         {
           src: require("../assets/img/banners/1.png"),
@@ -57,16 +58,12 @@ export default {
         .get("https://eucalyptus-api.herokuapp.com/articles")
         .then((response) => {
           this.articles = response.data;
-          setTimeout(this.closeLoading, 2500);
+          this.is_loading = false;
         })
         .catch((error) => {
           console.log(error);
         });
     },
-
-    closeLoading() {
-      this.is_loading = false
-    }
   },
 };
 </script>
