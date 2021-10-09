@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <loading-component v-model="is_loading"></loading-component>
     <v-flex offset-xs1 xs10>
       <v-carousel height="auto">
         <v-carousel-item
@@ -19,14 +20,17 @@
 
 <script>
 import ArticleCardList from "../components/ArticleCardList.vue";
+import LoadingComponent from "../components/vue/common/LoadingComponent.vue"
 import axios from "axios";
 export default {
   components: {
     ArticleCardList,
+    LoadingComponent,
   },
   data() {
     return {
       articles: [],
+      is_loading: false,
       carousel_items: [
         {
           src: require("../assets/img/banners/1.png"),
@@ -48,10 +52,12 @@ export default {
   },
   methods: {
     getArticles() {
+      this.is_loading = true;
       axios
         .get("https://eucalyptus-api.herokuapp.com/articles")
         .then((response) => {
           this.articles = response.data;
+          this.is_loading = false;
         })
         .catch((error) => {
           console.log(error);
