@@ -53,5 +53,5 @@ export default {
 </script>
 
 <style>
-@import "../../../public/styles/markdown.css";
+@import "/styles/markdown.css";
 </style>
