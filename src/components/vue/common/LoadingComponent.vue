@@ -32,5 +32,5 @@ export default {
 </script>
 
 <style>
-@import "../../../../public/styles/dialog.css";
+@import "/styles/dialog.css";
 </style>

@@ -1,0 +1,51 @@
+<template>
+  <v-app-bar app color="white" dark :flat="true">
+    <div class="d-flex align-center">
+      <v-img
+        alt="Eucalyptus Logo"
+        class="shrink mr-2"
+        contain
+        :src="require('../../../assets/img/logos/3t.png')"
+        transition="scale-transition"
+        width="230"
+      />
+    </div>
+
+    <v-spacer></v-spacer>
+
+    <header-button :button="buttons[0]"></header-button>
+    <header-button :button="buttons[1]"></header-button>
+    <header-button :button="buttons[2]"></header-button>
+  </v-app-bar>
+</template>
+
+<script>
+import HeaderButton from "./HeaderButton.vue";
+export default {
+  name: "App",
+  components: {
+    HeaderButton,
+  },
+  data: () => {
+    return {
+      buttons: [
+        {
+          text: "Search",
+          icon: "mdi-magnify",
+          link: "https://google.com",
+        },
+        {
+          text: "Create Article",
+          icon: "mdi-book-open-page-variant",
+          link: "/articles/create",
+        },
+        {
+          text: "Log-in",
+          icon: "mdi-account",
+          link: "https://google.com",
+        },
+      ],
+    };
+  },
+}
+</script>

@@ -4,7 +4,6 @@
       <v-card :key="article.id" class="mx-auto my-12">
         <v-card-title>{{ article.title }}</v-card-title>
         <v-divider class="mx-4"></v-divider>
-        <!-- <v-divider :dark=true class="mx-4"></v-divider> -->
         <v-card-text>{{
           sliceContent(removeMarkdown(article.content))
         }}</v-card-text>
