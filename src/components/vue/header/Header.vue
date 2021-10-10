@@ -35,9 +35,9 @@ export default {
           link: "https://google.com",
         },
         {
-          text: "Articles",
+          text: "Create Article",
           icon: "mdi-book-open-page-variant",
-          link: "https://google.com",
+          link: "/articles/create",
         },
         {
           text: "Log-in",
