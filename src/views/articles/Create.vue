@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-container fluid>
+      <loading-component v-model="is_loading"></loading-component>
       <h1 class = "mt-2">記事の追加</h1>
       <v-row>
         <v-col cols="12" sm="6" md="6" lg="6">
@@ -74,6 +75,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.is_loading = false;
         });
 
     }
