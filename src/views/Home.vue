@@ -2,17 +2,18 @@
   <v-container>
     <loading-component v-model="is_loading"></loading-component>
     <v-flex offset-xs1 xs10>
-      <v-carousel height="auto">
+      <v-carousel height="auto" cycle>
         <v-carousel-item
           v-for="(carousel_item, i) in carousel_items"
           :key="i"
-          :src="carousel_item.src"
           :href="carousel_item.link"
+          eager
         >
+          <v-img :src="carousel_item.src" eager></v-img>
         </v-carousel-item>
       </v-carousel>
     </v-flex>
-    <v-flex offset-xs3 xs6>
+    <v-flex offset-md2 md8 offset-xs1 xs10>
       <article-card-list :articles="articles"></article-card-list>
     </v-flex>
   </v-container>
