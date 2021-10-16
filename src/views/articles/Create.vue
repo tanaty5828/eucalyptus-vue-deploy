@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-container fluid>
+      <loading-component v-model="is_loading"></loading-component>
       <h1 class = "mt-2">記事の追加</h1>
       <v-row>
         <v-col cols="12" sm="6" md="6" lg="6">
@@ -41,7 +42,11 @@
 <script>
 import marked from "marked";
 import axios from "axios";
+import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
 export default {
+    components: {
+    LoadingComponent,
+  },
   data() {
     return {
       is_loading: false,
@@ -71,9 +76,11 @@ export default {
         .then((response) => {
           this.article = response.data;
           this.is_loading = false;
+          this.$router.push('/');
         })
         .catch((error) => {
           console.log(error);
+          this.is_loading = false;
         });
 
     }
