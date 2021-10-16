@@ -42,7 +42,11 @@
 <script>
 import marked from "marked";
 import axios from "axios";
+import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
 export default {
+    components: {
+    LoadingComponent,
+  },
   data() {
     return {
       is_loading: false,
