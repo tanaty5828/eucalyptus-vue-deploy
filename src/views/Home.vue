@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ArticleCardList from "../components/ArticleCardList.vue";
+import ArticleCardList from "../components/vue/articles/ArticleCardList.vue";
 import LoadingComponent from "../components/vue/common/LoadingComponent.vue";
 import axios from "axios";
 export default {
@@ -61,6 +61,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.is_loading = false;
         });
     },
   },

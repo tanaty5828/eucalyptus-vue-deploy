@@ -43,6 +43,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.is_loading = false;
         });
     },
     convertMarkdownToHTML(markdownText){
@@ -53,5 +54,5 @@ export default {
 </script>
 
 <style>
-@import "../../../public/styles/markdown.css";
+@import "/styles/markdown.css";
 </style>
