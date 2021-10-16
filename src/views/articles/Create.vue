@@ -76,6 +76,7 @@ export default {
         .then((response) => {
           this.article = response.data;
           this.is_loading = false;
+          this.$router.push('/');
         })
         .catch((error) => {
           console.log(error);
