@@ -14,14 +14,16 @@
       <v-row>
         <v-col v-if="is_preview" cols="12" sm="6" md="6" lg="6">
           <v-form class="" v-model="form">
-            <v-textarea
+            <v-text-field
               :label="article_title.label"
-              auto-grow
-              :rules="article_title.rules"
-              rows="1"
-              row-height="15"
+              :rules="[
+                article_title.rules.required,
+                article_title.rules.counter,
+              ]"
               v-model="article_title.text"
-            ></v-textarea>
+              counter
+              maxlength="40"
+            ></v-text-field>
             <v-textarea
               filled
               :rules="article_content.rules"
@@ -33,14 +35,16 @@
         </v-col>
         <v-col v-else cols="12" sm="12" md="12" lg="12">
           <v-form class="" v-model="form">
-            <v-textarea
+            <v-text-field
               :label="article_title.label"
-              auto-grow
-              :rules="article_title.rules"
-              rows="1"
-              row-height="15"
+              :rules="[
+                article_title.rules.required,
+                article_title.rules.counter,
+              ]"
               v-model="article_title.text"
-            ></v-textarea>
+              counter
+              maxlength="40"
+            ></v-text-field>
             <v-textarea
               filled
               :rules="article_content.rules"
@@ -87,7 +91,10 @@ export default {
       article_title: {
         label: "Title",
         text: "",
-        rules: [(v) => !!v || "Title is required"],
+        rules: {
+          required: (v) => !!v || "Title is required",
+          counter: (v) => v.length <= 40 || "Max 40 characters",
+        },
       },
       article_content: {
         label: "Aritcle",
