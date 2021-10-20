@@ -18,7 +18,7 @@
               :label="article_title.label"
               :rules="[
                 article_title.rules.required,
-                article_title.rules.counter,
+                article_title.rules.max_length,
               ]"
               v-model="article_title.text"
               counter
@@ -39,7 +39,7 @@
               :label="article_title.label"
               :rules="[
                 article_title.rules.required,
-                article_title.rules.counter,
+                article_title.rules.max_length,
               ]"
               v-model="article_title.text"
               counter
@@ -93,7 +93,7 @@ export default {
         text: "",
         rules: {
           required: (v) => !!v || "Title is required",
-          counter: (v) => v.length <= 40 || "Max 40 characters",
+          max_length: (v) => v.length <= 40 || "Max 40 characters",
         },
       },
       article_content: {
