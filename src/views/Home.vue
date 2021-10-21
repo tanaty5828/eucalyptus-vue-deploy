@@ -55,7 +55,7 @@ export default {
     getArticles() {
       this.is_loading = true;
       axios
-        .get("https://eucalyptus-api.herokuapp.com/articles")
+        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&page=1")
         .then((response) => {
           this.articles = response.data;
           this.is_loading = false;
