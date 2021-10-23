@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "hover.css": "^2.3.2",
     "marked": "^3.0.4",
+    "moment": "^2.29.1",
     "remove-markdown": "^0.3.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

@@ -2,12 +2,29 @@
   <div>
     <template v-for="article in articles">
       <v-card :key="article.id" class="mx-auto my-12">
-        <v-card-title>{{ article.title }}</v-card-title>
+        <v-img
+          class="white--text align-end"
+          height="400px"
+          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+        >
+          <v-card-text class="text-h6">
+            <v-icon color="white">mdi-lead-pencil</v-icon>
+            {{ article.created_at | moment }}</v-card-text
+          >
+          <v-card-title class="pb-0 text-h4">{{ article.title }}</v-card-title>
+          <br />
+        </v-img>
         <v-divider class="mx-4"></v-divider>
-        <v-card-text>{{
+        <v-card-text class="text-h6">{{
           sliceContent(removeMarkdown(article.content))
         }}</v-card-text>
-        <v-btn text color="green darken-4" class="mx-1 mb-2" @click="moveArticlePage(article.id_sha256)" >Read More</v-btn>
+        <v-btn
+          text
+          color="green darken-4"
+          class="mx-1 mb-2"
+          @click="moveArticlePage(article.id_sha256)"
+          >Read More</v-btn
+        >
       </v-card>
     </template>
   </div>
@@ -15,6 +32,7 @@
 
 <script>
 import removeMd from "remove-markdown";
+import moment from "moment";
 
 export default {
   props: {
@@ -26,9 +44,9 @@ export default {
   methods: {
     sliceContent(content) {
       if (!content) return "";
-      if (content.length > 200) {
+      if (content.length > 400) {
         console.log(content);
-        return content.slice(0, 200) + "...";
+        return content.slice(0, 400) + "...";
       }
       return content;
     },
@@ -40,7 +58,12 @@ export default {
     },
     moveArticlePage(id_sha256) {
       document.location.href = "./articles/show/" + id_sha256;
-    }
+    },
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format("YYYY/MM/DD");
+    },
   },
 };
 </script>
