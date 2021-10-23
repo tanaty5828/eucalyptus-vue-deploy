@@ -17,6 +17,7 @@
 <script>
 import marked from "marked"
 import axios from "axios";
+import errorRouting from "../../components/js/common/errorRouting";
 import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
 export default {
     components: {
@@ -42,8 +43,8 @@ export default {
           this.is_loading = false;
         })
         .catch((error) => {
-          console.log(error);
           this.is_loading = false;
+          errorRouting.errorRouting(error.response.status, this.$router);
         });
     },
     convertMarkdownToHTML(markdownText){

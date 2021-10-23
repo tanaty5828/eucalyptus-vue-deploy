@@ -19,8 +19,20 @@ const routes = [
     component: () => import('../views/articles/Show.vue'),
   },
   {
+    path: '/400',
+    component: () => import('../views/errors/404.vue'),
+  },
+  {
+    path: '/404',
+    component: () => import('../views/errors/404.vue'),
+  },
+  {
+    path: '/500',
+    component: () => import('../views/errors/404.vue'),
+  },
+  {
     path: '*',
-    component: () => import('../views/errors/Error.vue'),
+    component: () => import('../views/errors/404.vue'),
   },
 ]
 
