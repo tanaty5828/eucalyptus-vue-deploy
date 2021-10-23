@@ -39,7 +39,7 @@ export default {
         .replace(/#/g, "");
     },
     moveArticlePage(id_sha256) {
-      document.location.href = "./articles/" + id_sha256;
+      document.location.href = "./articles/show/" + id_sha256;
     }
   },
 };
