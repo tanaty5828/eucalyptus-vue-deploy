@@ -18,6 +18,10 @@ const routes = [
     path: '/articles/:id_sha256',
     component: () => import('../views/articles/Show.vue'),
   },
+  {
+    path: '*',
+    component: () => import('../views/errors/Error.vue'),
+  },
 ]
 
 const router = new VueRouter({
