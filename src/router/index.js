@@ -15,8 +15,12 @@ const routes = [
     component: () => import('../views/articles/Create.vue'),
   },
   {
-    path: '/articles/:id_sha256',
+    path: '/articles/show/:id_sha256',
     component: () => import('../views/articles/Show.vue'),
+  },
+  {
+    path: '/articles',
+    component: () => import('../views/articles/Index.vue'),
   },
   {
     path: '/400',
