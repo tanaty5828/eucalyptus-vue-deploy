@@ -36,6 +36,7 @@
 <script>
 import ArticleCardList from "../../components/vue/articles/ArticleCardList.vue";
 import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
+import scroll from "../../components/js/common/scroll.js";
 import axios from "axios";
 export default {
   components: {
@@ -53,6 +54,7 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     this.getArticles();
+    scroll.scrollTop();
     next();
   },
   methods: {
@@ -70,7 +72,7 @@ export default {
         });
     },
     movePage(page){
-      this.$router.push("/articles?page=" + page);
+      this.$router.push("/articles?page=" + page).catch(()=>{});
     },
   },
 };
