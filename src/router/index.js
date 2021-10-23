@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/400',
-    component: () => import('../views/errors/404.vue'),
+    component: () => import('../views/errors/400.vue'),
   },
   {
     path: '/404',
