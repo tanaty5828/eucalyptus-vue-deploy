@@ -32,9 +32,7 @@
           <template v-for="(button, i) in buttons">
             <v-list-item :to="button.link" :key="i" color="green darken-4">
               <v-icon color="green darken-4">{{ button.icon }}</v-icon>
-              <v-list-item-title>
-                {{ button.text }}</v-list-item-title
-              >
+              <v-list-item-title> {{ button.text }}</v-list-item-title>
             </v-list-item>
           </template>
         </v-list>
@@ -56,7 +54,7 @@ export default {
         {
           text: "Search",
           icon: "mdi-magnify",
-          link: "https://google.com",
+          link: "",
         },
         {
           text: "Create Article",
@@ -66,7 +64,7 @@ export default {
         {
           text: "Log-in",
           icon: "mdi-account",
-          link: "https://google.com",
+          link: "",
         },
       ],
     };
