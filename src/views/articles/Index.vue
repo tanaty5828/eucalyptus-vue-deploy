@@ -1,18 +1,6 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <loading-component v-model="is_loading"></loading-component>
-    <v-flex offset-xs1 xs10>
-      <v-carousel height="auto" cycle>
-        <v-carousel-item
-          v-for="(carousel_item, i) in carousel_items"
-          :key="i"
-          :href="carousel_item.link"
-          eager
-        >
-          <v-img :src="carousel_item.src" eager></v-img>
-        </v-carousel-item>
-      </v-carousel>
-    </v-flex>
     <v-flex offset-md2 md8 offset-xs1 xs10>
       <article-card-list :articles="articles"></article-card-list>
     </v-flex>
@@ -52,8 +40,9 @@
 </template>
 
 <script>
-import ArticleCardList from "../components/vue/articles/ArticleCardList.vue";
-import LoadingComponent from "../components/vue/common/LoadingComponent.vue";
+import ArticleCardList from "../../components/vue/articles/ArticleCardList.vue";
+import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
+import scroll from "../../components/js/common/scroll.js";
 import axios from "axios";
 export default {
   components: {
@@ -64,30 +53,21 @@ export default {
     return {
       articles: [],
       is_loading: false,
-      carousel_items: [
-        {
-          src: require("../assets/img/banners/1.png"),
-          link: "https://google.com",
-        },
-        {
-          src: require("../assets/img/banners/2.png"),
-          link: "https://google.com",
-        },
-        {
-          src: require("../assets/img/banners/3.png"),
-          link: "https://google.com",
-        },
-      ],
     };
   },
   created() {
     this.getArticles();
   },
+  beforeRouteUpdate(to, from, next) {
+    this.getArticles();
+    scroll.scrollTop();
+    next();
+  },
   methods: {
     getArticles() {
       this.is_loading = true;
       axios
-        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc")
+        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page)
         .then((response) => {
           this.articles = response.data;
           this.is_loading = false;
