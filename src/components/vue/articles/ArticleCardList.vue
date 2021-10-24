@@ -45,7 +45,6 @@ export default {
     sliceContent(content) {
       if (!content) return "";
       if (content.length > 400) {
-        console.log(content);
         return content.slice(0, 400) + "...";
       }
       return content;
