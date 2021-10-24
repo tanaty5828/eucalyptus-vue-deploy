@@ -4,7 +4,7 @@
     <v-flex offset-md2 md8 offset-xs1 xs10>
       <article-card-list :articles="articles"></article-card-list>
     </v-flex>
-    <article-page-nation />
+    <article-page-nation :page="page"/>
   </v-container>
 </template>
 
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       articles: [],
+      page: {},
       is_loading: false,
     };
   },
@@ -41,7 +42,8 @@ export default {
       axios
         .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page)
         .then((response) => {
-          this.articles = response.data;
+          this.articles = response.data.article;
+          this.page = response.data.page;
           this.is_loading = false;
         })
         .catch((error) => {

@@ -10,20 +10,8 @@
           color="green darken-4"
           group
         >
-        <v-btn value=1 @click="movePage(1)">
-          1
-        </v-btn>
-
-        <v-btn value=2 @click="movePage(2)">
-          2
-        </v-btn>
-
-        <v-btn value=3 @click="movePage(3)">
-          3
-        </v-btn>
-
-        <v-btn value=4 @click="movePage(4)">
-          4
+        <v-btn v-for="n of page.total_pages" @click="movePage(n)" :key="n">
+          {{ n }}
         </v-btn>
         </v-btn-toggle>
       </v-row>
@@ -32,6 +20,12 @@
 </template>
 <script>
 export default {
+    props: {
+    page: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
     movePage(page){
       this.$router.push("/articles?page=" + page).catch(()=>{});
