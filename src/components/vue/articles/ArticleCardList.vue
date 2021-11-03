@@ -2,18 +2,25 @@
   <div>
     <template v-for="article in articles">
       <v-card :key="article.id" class="mx-auto my-12">
-        <v-img
-          class="white--text align-end"
-          height="400px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+        <router-link
+          :to="articlePageLink(article.id_sha256)"
+          class="router-text"
         >
-          <v-card-text class="text-h6">
-            <v-icon color="white">mdi-lead-pencil</v-icon>
-            {{ article.created_at | moment }}</v-card-text
+          <v-img
+            class="white--text align-end"
+            height="400px"
+            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
           >
-          <v-card-title class="pb-0 text-h4">{{ article.title }}</v-card-title>
-          <br />
-        </v-img>
+            <v-card-text class="text-h6">
+              <v-icon color="white">mdi-lead-pencil</v-icon>
+              {{ article.created_at | moment }}</v-card-text
+            >
+            <v-card-title class="pb-0 text-h4">{{
+              article.title
+            }}</v-card-title>
+            <br />
+          </v-img>
+        </router-link>
         <v-divider class="mx-4"></v-divider>
         <v-card-text class="text-h6">{{
           sliceContent(removeMarkdown(article.content))
@@ -29,6 +36,10 @@
     </template>
   </div>
 </template>
+
+<style>
+@import "/styles/router-link.css";
+</style>
 
 <script>
 import removeMd from "remove-markdown";
@@ -57,6 +68,9 @@ export default {
     },
     moveArticlePage(id_sha256) {
       document.location.href = "./articles/show/" + id_sha256;
+    },
+    articlePageLink(id_sha256) {
+      return "./articles/show/" + id_sha256;
     },
   },
   filters: {
