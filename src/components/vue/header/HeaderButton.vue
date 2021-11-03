@@ -11,11 +11,11 @@
         <v-card>
           <v-card-title> </v-card-title>
           <v-card-text>
-            <v-text-field label="keywords" required v-model="searchKeywords"></v-text-field>
+            <v-text-field label="keywords" required v-model="search_keywords"></v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="green darken-4 white--text" @click="dialog = false">
+            <v-btn color="green darken-4 white--text" @click=movePage()>
               <v-icon color="white">mdi-magnify</v-icon>
               Search
             </v-btn>
@@ -36,12 +36,17 @@
 export default {
   data: () => ({
     dialog: false,
-    searchKeywords: "",
+    search_keywords: "",
   }),
   props: {
     button: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    movePage(){
+      this.$router.push("/articles?keyword=" + this.search_keywords + "&&page=1").catch(()=>{});
     },
   },
 };
