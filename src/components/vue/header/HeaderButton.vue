@@ -11,7 +11,7 @@
         <v-card>
           <v-card-title> </v-card-title>
           <v-card-text>
-            <v-text-field label="keywords" required v-model="search_keywords"></v-text-field>
+            <v-text-field label="keywords" required v-model="search_keywords" @keydown.enter=movePage()></v-text-field>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
