@@ -47,6 +47,7 @@ export default {
   methods: {
     movePage(){
       this.$router.push("/articles?keyword=" + this.search_keywords + "&&page=1").catch(()=>{});
+      this.dialog = false;
     },
   },
 };
