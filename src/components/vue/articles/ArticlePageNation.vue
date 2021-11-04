@@ -28,7 +28,8 @@ export default {
   },
   methods: {
     movePage(page){
-      this.$router.push("/articles?page=" + page).catch(()=>{});
+      const keyword = ( this.$route.query.keyword === undefined ? "" : this.$route.query.keyword)
+      this.$router.push("/articles?page=" + page + "&&keyword=" + keyword).catch(()=>{});
     },
   },
 };

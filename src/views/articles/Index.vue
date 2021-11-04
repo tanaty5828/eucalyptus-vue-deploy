@@ -32,15 +32,16 @@ export default {
     this.getArticles();
   },
   beforeRouteUpdate(to, from, next) {
+    next();
     this.getArticles();
     scroll.scrollTop();
-    next();
   },
   methods: {
     getArticles() {
       this.is_loading = true;
+      const keyword = ( this.$route.query.keyword === undefined ? "" : this.$route.query.keyword)
       axios
-        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page)
+        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page + "&&keyword=" + keyword)
         .then((response) => {
           this.articles = response.data.article;
           this.page = response.data.page;
