@@ -36,4 +36,5 @@ jobs:
 
       - name: Push pages
         run: |
+          cd deploy/eucalyptus-vue
           git push origin master
