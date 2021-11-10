@@ -4,7 +4,7 @@
       <v-img
         class="white--text align-end"
         height="400px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+       :src=generateRandomPhotoUrl(article.id)
       >
         <v-card-text class="text-h6">
           <v-icon color="white">mdi-lead-pencil</v-icon>
@@ -62,6 +62,9 @@ export default {
     },
     articlePageLink(id_sha256) {
       return "./articles/show/" + id_sha256;
+    },
+    generateRandomPhotoUrl(id) {
+      return "https://picsum.photos/1024/768?random=" + id;
     },
   },
   filters: {
