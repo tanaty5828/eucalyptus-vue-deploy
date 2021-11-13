@@ -13,17 +13,13 @@
         </v-carousel-item>
       </v-carousel>
     </v-flex>
-    <v-flex offset-md1 md10 offset-xs1 xs10>
-      <v-row>
+    <v-flex offset-md2 md8 offset-xs1 xs10>
         <template v-for="article in articles">
-          <v-col cols="6" :key="article.id">
             <article-card-list
               :article="article"
               :key="article.id"
             ></article-card-list>
-          </v-col>
         </template>
-      </v-row>
     </v-flex>
     <article-page-nation :page="page" />
   </v-container>
@@ -69,7 +65,7 @@ export default {
       this.is_loading = true;
       axios
         .get(
-          "https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc"
+          "https://eucalyptus-api.herokuapp.com/articles?size=6&&orderby=created_at&&direction=desc"
         )
         .then((response) => {
           this.articles = response.data.article;

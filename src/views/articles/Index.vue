@@ -50,7 +50,7 @@ export default {
       this.is_loading = true;
       const keyword = ( this.$route.query.keyword === undefined ? "" : this.$route.query.keyword)
       axios
-        .get("https://eucalyptus-api.herokuapp.com/articles?size=5&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page + "&&keyword=" + keyword)
+        .get("https://eucalyptus-api.herokuapp.com/articles?size=6&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page + "&&keyword=" + keyword)
         .then((response) => {
           this.articles = response.data.article;
           this.page = response.data.page;
