@@ -41,7 +41,7 @@
 <script>
 import removeMd from "remove-markdown";
 import moment from "moment";
-import shareButtons from "../common/ShareButtons.vue"
+import ShareButtons from "../common/ShareButtons.vue"
 
 export default {
   props: {
@@ -51,7 +51,7 @@ export default {
     },
   },
   components: {
-    shareButtons,
+    ShareButtons,
   },
   methods: {
     sliceContent(content) {
