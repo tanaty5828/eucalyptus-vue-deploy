@@ -19,13 +19,17 @@
       <v-card-text class="text-h6">{{
         sliceContent(removeMarkdown(article.content))
       }}</v-card-text>
-      <v-btn
-        text
-        color="green darken-4"
-        class="mx-1 mb-2"
-        @click="moveArticlePage(article.id_sha256)"
-        >Read More</v-btn
-      >
+      <v-card-actions>
+        <v-btn
+          text
+          color="green darken-4"
+          class="mx-1"
+          @click="moveArticlePage(article.id_sha256)"
+          >Read More</v-btn
+        >
+        <v-spacer></v-spacer>
+        <share-buttons :url="'https://eucalyptus-vue-deploy.vercel.app/articles/show/' + article.id_sha256" />
+      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -37,6 +41,7 @@
 <script>
 import removeMd from "remove-markdown";
 import moment from "moment";
+import shareButtons from "../common/ShareButtons.vue"
 
 export default {
   props: {
@@ -44,6 +49,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  components: {
+    shareButtons,
   },
   methods: {
     sliceContent(content) {
