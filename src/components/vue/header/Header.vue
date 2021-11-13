@@ -33,7 +33,6 @@
             <template v-for="(button, i) in buttons">
               <div v-if="button.text == 'Search'" :key="i">
                 <v-list-item
-                  :to="button.link"
                   :key="i"
                   color="green darken-4"
                   @click="openSearchDialog()"
