@@ -3,7 +3,7 @@
     <v-card :key="article.id" class="mx-auto my-12">
       <v-img
         class="white--text align-end"
-        height="400px"
+        max-height="400px"
        :src=generateRandomPhotoUrl(article.id)
       >
         <v-card-text class="text-h6">
