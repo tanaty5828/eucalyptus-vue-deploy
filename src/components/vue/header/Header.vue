@@ -47,7 +47,6 @@
                   :to="button.link"
                   :key="i"
                   color="green darken-4"
-                  @click="openSearchDialog()"
                 >
                   <v-icon color="green darken-4">{{ button.icon }}</v-icon>
                   <v-list-item-title> {{ button.text }}</v-list-item-title>
