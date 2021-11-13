@@ -23,6 +23,10 @@ const routes = [
     component: () => import('../views/articles/Index.vue'),
   },
   {
+    path: '/articles/:id_sha256/edit',
+    component: () => import('../views/articles/Edit.vue'),
+  },
+  {
     path: '/400',
     component: () => import('../views/errors/400.vue'),
   },
