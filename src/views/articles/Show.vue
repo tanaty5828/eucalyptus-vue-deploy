@@ -10,6 +10,13 @@
           </div>
         </v-card-text>
       </v-card>
+      <v-row class = "mt-4 mr-1">
+        <v-btn
+          color="green darken-4"
+          class="white--text ml-auto"
+          @click="moveArticleEditPage"
+          >編集</v-btn>
+      </v-row>
     </v-container>
   </v-app>
 </template>
@@ -46,6 +53,9 @@ export default {
           this.is_loading = false;
           errorRouting.errorRouting(error.response.status, this.$router);
         });
+    },
+    moveArticleEditPage(){
+      this.$router.push("/articles/" + this.$route.params.id_sha256+ "/edit");
     },
     convertMarkdownToHTML(markdownText){
       document.querySelector('#content').innerHTML = marked(markdownText);
