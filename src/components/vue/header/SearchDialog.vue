@@ -26,10 +26,8 @@
 export default {
   data: () => ({
     search_keywords: "",
+    dialog: false,
   }),
-  props: {
-      isOpenSearchDialog: Boolean,
-  },
   methods: {
     movePage() {
       this.$router
@@ -37,17 +35,10 @@ export default {
         .catch(() => {});
       this.dialog = false;
     },
+    openSearchDialog(){
+        this.dialog = true;
+    }
   },
-  computed: {
-      dialog : {
-          get() {
-              return this.isOpenSearchDialog;
-          },
-          set(newVal) {
-              this.$emit('input', newVal)
-          }
-      }
-  }
 };
 </script>
 

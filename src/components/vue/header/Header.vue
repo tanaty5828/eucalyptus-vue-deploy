@@ -56,10 +56,7 @@
         </v-menu>
       </div>
     </v-app-bar>
-    <search-dialog
-      :isOpenSearchDialog="isOpenSearchDialog"
-      @input="isOpenSearchDialog = $event"
-    ></search-dialog>
+    <search-dialog ref="childOpenSearchDialog"></search-dialog>
   </div>
 </template>
 
@@ -96,7 +93,7 @@ export default {
   },
   methods: {
     openSearchDialog() {
-      this.isOpenSearchDialog = true;
+      this.$refs.childOpenSearchDialog.openSearchDialog()
     },
   },
 };
