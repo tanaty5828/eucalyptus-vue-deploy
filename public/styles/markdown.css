@@ -835,7 +835,7 @@
   overflow: visible;
   line-height: inherit;
   word-wrap: normal;
-  background-color: initial;
+  background-color: initial !important;
   border: 0;
 }
 
