@@ -1,18 +1,20 @@
 <template>
   <div>
     <v-card :key="article.id" class="mx-auto my-12">
-      <v-img
-        class="white--text align-end"
-        max-height="400px"
-       :src=generateRandomPhotoUrl(article.id)
-      >
-        <v-card-text class="text-h6">
-          <v-icon color="white">mdi-lead-pencil</v-icon>
-          {{ article.created_at | moment }}</v-card-text
+      <router-link :to="articlePageLink(article.id_sha256)" class="router-text">
+        <v-img
+          class="white--text align-end"
+          max-height="400px"
+          :src="generateRandomPhotoUrl(article.id)"
         >
-        <v-card-title class="pb-0 text-h4">{{ article.title }}</v-card-title>
-        <br />
-      </v-img>
+          <v-card-text class="text-h6">
+            <v-icon color="white">mdi-lead-pencil</v-icon>
+            {{ article.created_at | moment }}</v-card-text
+          >
+          <v-card-title class="pb-0 text-h4">{{ article.title }}</v-card-title>
+          <br />
+        </v-img>
+      </router-link>
       <v-divider class="mx-4"></v-divider>
       <v-card-text class="text-h6">{{
         sliceContent(removeMarkdown(article.content))
