@@ -10,12 +10,17 @@
           </div>
         </v-card-text>
       </v-card>
-      <v-row class = "mt-4 mr-1">
+      <v-row class = "mt-4 justify-end">
         <v-btn
           color="green darken-4"
-          class="white--text ml-auto"
+          class="white--text mr-3"
           @click="moveArticleEditPage"
-          >編集</v-btn>
+          >Edit</v-btn>
+        <v-btn
+          color="error"
+          class="mr-4"
+          @click="removeArticle"
+          >Delete</v-btn>
       </v-row>
     </v-container>
   </v-app>
@@ -55,7 +60,21 @@ export default {
         });
     },
     moveArticleEditPage(){
-      this.$router.push("/articles/" + this.$route.params.id_sha256+ "/edit");
+      this.$router.push("/articles/" + this.$route.params.id_sha256 + "/edit");
+    },
+    removeArticle(){
+      if (window.confirm("Do you really want to delete?")) {
+        this.is_loading = true;
+        axios
+          .delete("https://eucalyptus-api.herokuapp.com/articles/" + this.$route.params.id_sha256)
+          .then(() => {
+            this.$router.push("/");
+          })
+          .catch((error) => {
+            this.is_loading = false;
+            errorRouting.errorRouting(error.response.status, this.$router);
+          });
+      }
     },
     convertMarkdownToHTML(markdownText){
       document.querySelector('#content').innerHTML = marked(markdownText);
