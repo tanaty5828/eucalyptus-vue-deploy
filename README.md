@@ -28,3 +28,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Customize Icon
+Introduced this article as a reference.
+https://qiita.com/skmtko/items/a83f836b48f24309916d
+
+Icon moon Url: https://icomoon.io/app/#/select

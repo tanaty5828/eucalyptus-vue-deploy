@@ -2,6 +2,13 @@
   <div>
     <v-btn
       icon
+      :href="'https://social-plugins.line.me/lineit/share?url=' + url + '&text=' + share_content"
+      target="_blank"
+    >
+      <v-icon>icon-line</v-icon>
+    </v-btn>
+    <v-btn
+      icon
       color="primary"
       :href="'https://www.facebook.com/sharer/sharer.php?u=' + url"
       target="_blank"
@@ -26,8 +33,12 @@ export default {
   },
   data: () => {
     return {
-      share_content: '共有記事:',
+      share_content: 'Share Article:',
     };
   },
 };
 </script>
+
+<style>
+@import '../../../assets/icomoon/style.css';
+</style>
