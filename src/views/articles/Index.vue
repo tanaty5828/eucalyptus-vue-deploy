@@ -52,6 +52,9 @@ export default {
       axios
         .get("https://eucalyptus-api.herokuapp.com/articles?size=6&&orderby=created_at&&direction=desc&&page=" + this.$route.query.page + "&&keyword=" + keyword)
         .then((response) => {
+          if(!response.data.article.length) {
+            this.$router.push("/articles/search-not-found");
+          }
           this.articles = response.data.article;
           this.page = response.data.page;
           this.is_loading = false;
