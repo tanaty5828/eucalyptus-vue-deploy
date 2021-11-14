@@ -1,39 +1,36 @@
 <template>
   <div>
-    <template v-for="article in articles">
-      <v-card :key="article.id" class="mx-auto my-12">
-        <router-link
-          :to="articlePageLink(article.id_sha256)"
-          class="router-text"
+    <v-card :key="article.id" class="mx-auto my-12">
+      <router-link :to="articlePageLink(article.id_sha256)" class="router-text">
+        <v-img
+          class="white--text align-end"
+          max-height="400px"
+          :src="generateRandomPhotoUrl(article.id)"
         >
-          <v-img
-            class="white--text align-end"
-            height="400px"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          <v-card-text class="text-h6">
+            <v-icon color="white">mdi-lead-pencil</v-icon>
+            {{ article.created_at | moment }}</v-card-text
           >
-            <v-card-text class="text-h6">
-              <v-icon color="white">mdi-lead-pencil</v-icon>
-              {{ article.created_at | moment }}</v-card-text
-            >
-            <v-card-title class="pb-0 text-h4">{{
-              article.title
-            }}</v-card-title>
-            <br />
-          </v-img>
-        </router-link>
-        <v-divider class="mx-4"></v-divider>
-        <v-card-text class="text-h6">{{
-          sliceContent(removeMarkdown(article.content))
-        }}</v-card-text>
+          <v-card-title class="pb-0 text-h4">{{ article.title }}</v-card-title>
+          <br />
+        </v-img>
+      </router-link>
+      <v-divider class="mx-4"></v-divider>
+      <v-card-text class="text-h6">{{
+        sliceContent(removeMarkdown(article.content))
+      }}</v-card-text>
+      <v-card-actions>
         <v-btn
           text
           color="green darken-4"
-          class="mx-1 mb-2"
+          class="mx-1"
           @click="moveArticlePage(article.id_sha256)"
           >Read More</v-btn
         >
-      </v-card>
-    </template>
+        <v-spacer></v-spacer>
+        <share-buttons :url="'https://eucalyptus-vue-deploy.vercel.app/articles/show/' + article.id_sha256" />
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -44,13 +41,17 @@
 <script>
 import removeMd from "remove-markdown";
 import moment from "moment";
+import ShareButtons from "../common/ShareButtons.vue"
 
 export default {
   props: {
-    articles: {
-      type: Array,
+    article: {
+      type: Object,
       required: true,
     },
+  },
+  components: {
+    ShareButtons,
   },
   methods: {
     sliceContent(content) {
@@ -71,6 +72,9 @@ export default {
     },
     articlePageLink(id_sha256) {
       return "./articles/show/" + id_sha256;
+    },
+    generateRandomPhotoUrl(id) {
+      return "https://picsum.photos/1024/768?random=" + id;
     },
   },
   filters: {
