@@ -9,6 +9,10 @@
             <div id="content"></div>
           </div>
         </v-card-text>
+        <v-card-actions>
+        <v-spacer></v-spacer>
+        <share-buttons :url="'https://eucalyptus-vue-deploy.vercel.app/articles/show/' + article.id_sha256" />
+      </v-card-actions>
       </v-card>
       <v-row class = "mt-4 justify-end">
         <v-btn
@@ -29,11 +33,13 @@
 <script>
 import marked from "marked"
 import axios from "axios";
+import ShareButtons from "../../components/vue/common/ShareButtons.vue"
 import errorRouting from "../../components/js/common/errorRouting";
 import LoadingComponent from "../../components/vue/common/LoadingComponent.vue";
 export default {
     components: {
     LoadingComponent,
+    ShareButtons
   },
   data() {
     return {
