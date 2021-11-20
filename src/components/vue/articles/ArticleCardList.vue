@@ -24,7 +24,7 @@
           text
           color="green darken-4"
           class="mx-1"
-          @click="moveArticlePage(article.id_sha256)"
+          :to="articlePageLink(article.id_sha256)"
           >Read More</v-btn
         >
         <v-spacer></v-spacer>
@@ -66,9 +66,6 @@ export default {
         .replace(/\\n/g, "")
         .replace(/\\t/g, "")
         .replace(/#/g, "");
-    },
-    moveArticlePage(id_sha256) {
-      document.location.href = "./articles/" + id_sha256 + "/show";
     },
     articlePageLink(id_sha256) {
       return "./articles/" + id_sha256 + "/show";
