@@ -68,10 +68,10 @@ export default {
         .replace(/#/g, "");
     },
     moveArticlePage(id_sha256) {
-      document.location.href = "./articles/show/" + id_sha256;
+      document.location.href = "./articles/" + id_sha256 + "/show";
     },
     articlePageLink(id_sha256) {
-      return "./articles/show/" + id_sha256;
+      return "./articles/" + id_sha256 + "/show";
     },
     generateRandomPhotoUrl(id) {
       return "https://picsum.photos/1024/768?random=" + id;
