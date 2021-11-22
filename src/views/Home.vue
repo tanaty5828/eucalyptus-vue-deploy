@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <loading-component v-model="is_loading"></loading-component>
-    <v-flex offset-xs1 xs10>
-      <v-carousel height="auto" cycle>
+    <v-flex offset-md1 md10>
+      <v-carousel height="auto" class="mt-4" cycle>
         <v-carousel-item
           v-for="(carousel_item, i) in carousel_items"
           :key="i"
