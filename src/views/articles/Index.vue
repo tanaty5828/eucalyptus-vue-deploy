@@ -4,7 +4,7 @@
     <v-flex offset-md1 md10 offset-xs1 xs10>
       <v-row>
         <template v-for="article in articles">
-          <v-col cols="6" :key="article.id">
+          <v-col cols="12" sm="6" :key="article.id">
             <article-card-list
               :article="article"
               :key="article.id"

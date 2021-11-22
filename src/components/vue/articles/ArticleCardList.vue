@@ -4,7 +4,7 @@
       <router-link :to="articlePageLink(article.id_sha256)" class="router-text">
         <v-img
           class="white--text align-end"
-          max-height="400px"
+          max-height="300px"
           :src="generateRandomPhotoUrl(article.id)"
         >
           <v-card-text class="text-h6">
