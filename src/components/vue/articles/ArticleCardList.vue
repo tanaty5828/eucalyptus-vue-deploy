@@ -28,7 +28,7 @@
           >Read More</v-btn
         >
         <v-spacer></v-spacer>
-        <share-buttons :url="'https://eucalyptus-vue-deploy.vercel.app/articles/show/' + article.id_sha256" />
+        <share-buttons :url="'https://eucalyptus-vue-deploy.vercel.app/articles/'+ article.id_sha256 + '/show'" />
       </v-card-actions>
     </v-card>
   </div>
